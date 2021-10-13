@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import logo from "../../assets/img/logo.png";
-import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { LoginApi } from "../../Services/Fetch";
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -19,26 +19,22 @@ function Login(props) {
   });
   const handleSubit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://reqres.in/api/login", {
-        email: username,
-        password: password,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setError(false);
-          setResponse(true)
-          setResponseMessage("با موفقیت وارد شدید");
-          localStorage.setItem("token", res.data.jwt);
-          setInterval(() => {
-            props.history.push("/dashboard");
-          }, 1000);
-        } else {
-          setError(true);
-          setResponse(false)
-          setErrorMessage("نام کاربری یا رمز عبور شما اشتباه است");
-        }
-      });
+    LoginApi(username, password).then((res) => {
+      console.log(res)
+      if (res.status === 200) {
+        setError(false);
+        setResponse(true)
+        setResponseMessage("با موفقیت وارد شدید");
+        localStorage.setItem("token", res.data.jwt);
+        setTimeout(() => {
+          props.history.push("/dashboard");
+        }, 1500);
+      } else {
+        setError(true);
+        setResponse(false)
+        setErrorMessage("نام کاربری یا رمز عبور شما اشتباه است");
+      }
+    });
   };
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -51,13 +47,13 @@ function Login(props) {
     <div className="h-100 w-100 d-flex justify-content-center align-items-center login">
       <div className="loginForm">
         <div className="w-100 d-flex justify-content-center mb-4">
-          <img src={logo} alt="" width="250px" />
+          <img src={logo} alt="" width="350px" />
         </div>
-        <form onSubmit={handleSubit}>
-          <div className="mb-3">
+        <form onSubmit={handleSubit} className="w-75">
+          <div className="mb-3 w-100">
             <input
               type="email"
-              className="form-control"
+              className="form-control w-100 text-center"
               placeholder="نام کاربری"
               value={username}
               name={username}
@@ -67,7 +63,7 @@ function Login(props) {
           <div className="mb-3">
             <input
               type="password"
-              className="form-control"
+              className="form-control w-100 text-center"
               placeholder="رمز عبور"
               value={password}
               name={password}
@@ -81,12 +77,12 @@ function Login(props) {
           </div>
         </form>
         {error ? (
-          <div className="alert alert-danger" role="alert">
+          <div className="alert alert-danger w-75" role="alert">
             {errorMessage}
           </div>
         ) : null}
         {response ? (
-          <div className="alert alert-success" role="alert">
+          <div className="alert alert-success w-75" role="alert">
             {responseMessage}
           </div>
         ) : null}

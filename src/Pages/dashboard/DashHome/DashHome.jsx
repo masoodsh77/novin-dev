@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserLists } from "../../../Services/Fetch";
 import "../DashHome.css";
 import Cards from "./Components/Cards";
 
@@ -10,10 +10,10 @@ function DashHome(props) {
     if (localStorage.getItem("token") === null) {
       props.history.push("/");
     }
-    axios.get("https://reqres.in/api/users?page=2").then((res) => {
+    UserLists().then((res) => {
       setUsers(res.data.data);
     });
-  });
+  },[props]);
   return (
     <div className="text-center dashHome w-100">
       <div className="row w-100 p-5">

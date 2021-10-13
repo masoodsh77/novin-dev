@@ -1,17 +1,14 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { SingleUserApi } from "../../../Services/Fetch";
 
 function SingleUser(props) {
   const [user, setUser] = useState([]);
   useEffect(() => {
-    axios
-      .get(`https://reqres.in/api/users/${props.location.state.id}`)
-      .then((res) => {
-        setUser(res.data.data);
-      });
-  });
-  console.log(user);
+    SingleUserApi(props.location.state.id).then((res) => {
+      setUser(res.data.data);
+    });
+  }, [props]);
   return (
     <div className="userCard p-3">
       <div className="userCardChild w-100">
