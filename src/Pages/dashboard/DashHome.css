@@ -1,0 +1,117 @@
+.dashHome{
+    overflow: hidden;
+}
+.card {
+    height: 10rem;
+    border: none !important;
+    border-radius: 5px !important;
+    background-color: #fff;
+    box-shadow: 1px 5px 10px #dbdbdb;
+    padding: 0.5rem;
+    position: relative;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: #000 !important;
+}
+.cards a{
+    text-decoration: none !important;
+    color: #000 !important;
+}
+.card:hover{
+    background-color: #336666;
+    color: #fff;
+}
+.CardImage{
+    width:  7rem;
+    height:  7rem;
+    border-radius: 50%;
+    margin: auto;
+}
+.title{
+    position: absolute;
+    font-size: 2rem;
+}
+.info{
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    color: rgb(222,48,111);
+}
+.info span{
+    color: black;
+}
+.chart{
+    width: 100%;
+    height:23.5rem !important;
+    border: none !important;
+    border-radius: 5px !important;
+    background-color: #fff;
+    box-shadow: 1px 5px 10px #dbdbdb;
+    padding: 0.5rem;
+    position: relative;
+    margin-bottom: 1rem;
+}
+.chartTitle{
+    text-align: right !important;
+    font-size: 1.2rem;
+    border-bottom: 2px solid rgb(222,48,111);
+    margin-bottom: 10px;
+}
+.LineChart svg{
+    height: 20rem !important;
+    max-height: 20rem !important;
+    width: 100% !important;
+}
+.resturantCard{
+    cursor: pointer;
+    border-bottom: 1px solid lightgray;
+    height: 3rem;
+}
+.resturantCard:hover{
+    background-color: rgba(222,48,111,0.1);
+}
+.resturantImg img{
+    border-radius: 50% !important ;
+    height: 3rem;
+    width: 3rem;
+}
+.resturantName , .resturantSell{
+    text-align: right !important;
+}
+.resturantIcon{
+    text-align: left !important;
+}
+.resturantSell{
+    color: #000;
+}
+.resturantSell span{
+    color: #DE306F;
+}
+.resturantArrow{
+    color: #DE306F;
+}
+.userCard{
+    width: 100%;
+    height: 100%;
+}
+.userCardChild{
+    height: 100%;
+    border: none !important;
+    border-radius: 5px !important;
+    background-color: #fff;
+    box-shadow: 1px 5px 10px #dbdbdb;
+    padding: 0.5rem;
+    position: relative;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.avatar img{
+    border-radius: 50% !important;
+    width: 15rem;
+    height: 15rem;
+}
